@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/dogs_fr"
+        android:icon="@drawable/dog_svgrepo_com"
+        android:title="Собачки"></item>
+    <item
+        android:id="@+id/priut_fr"
+        android:icon="@drawable/bone_icon"
+        android:title="Приюты"></item>
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/profile_round_1342_svgrepo_com"
+        android:title="Профиль"></item>
+
+</menu>

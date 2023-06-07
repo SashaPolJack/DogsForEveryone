@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.LoginView.ProfileDog.ProfileDog">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView25"
+                    android:layout_width="419dp"
+                    android:layout_height="413dp"
+                    android:scaleX="2"
+                    android:scaleY="2"
+                    tools:src="@tools:sample/avatars" />
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/take_but"
+                android:layout_width="267dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="36dp"
+                android:backgroundTint="#41B22F"
+                android:fontFamily="sans-serif-light"
+                android:text="Забрать"
+                android:textSize="24sp"
+                app:cornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name_dog" />
+
+            <Button
+                android:id="@+id/take_but2"
+                android:layout_width="267dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#BAB86C"
+                android:fontFamily="sans-serif-light"
+                android:text="Прогулка"
+                android:textSize="24sp"
+                app:cornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/desc_dog" />
+
+            <Button
+                android:id="@+id/take_but3"
+                android:layout_width="267dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="70dp"
+                android:backgroundTint="#BF6D30"
+                android:fontFamily="sans-serif-light"
+                android:text="Подписаться"
+                android:textSize="24sp"
+                app:cornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/take_but2" />
+
+            <TextView
+                android:id="@+id/name_dog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-black"
+                android:text="TextView"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView9" />
+
+            <TextView
+                android:id="@+id/desc_dog"
+                android:layout_width="328dp"
+                android:layout_height="74dp"
+                android:layout_marginTop="48dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/take_but" />
+
+            <ImageView
+                android:id="@+id/imageView27"
+                android:layout_width="66dp"
+                android:layout_height="76dp"
+                android:src="@drawable/prof_dog"
+                app:layout_constraintEnd_toStartOf="@+id/take_but3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/take_but2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>
