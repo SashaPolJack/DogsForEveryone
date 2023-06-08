@@ -61,7 +61,21 @@ private ProfileDogViewModel profileDogViewModel;
         holder.weg.setText(arrayDog.get(position).getData().get("weight").toString());
         holder.oil.setText(arrayDog.get(position).getData().get("iol").toString());
 
+
         Picasso.get().load(arrayDog.get(position).getData().get("Image").toString()).into(holder.images);
+        holder.images_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(holder.itemView).navigate(R.id.action_dogs_to_pay);
+            }
+        });
+        holder.images_take.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                profileDogViewModel.getDogsRepsitory().getDocumentSnapshotMutableLiveData().setValue(arrayDog.get(position));
+                Navigation.findNavController(holder.itemView).navigate(R.id.action_dogs_to_take2);
+            }
+        });
         holder.images.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +96,8 @@ private ProfileDogViewModel profileDogViewModel;
     // The ViewHolder class holds the view
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView images;
+        ImageView images_help;
+        ImageView images_take;
         TextView name;
         TextView disc;
         TextView old;
@@ -95,6 +111,8 @@ private ProfileDogViewModel profileDogViewModel;
             weg = itemView.findViewById(R.id.count_dollars);
             oil = itemView.findViewById(R.id.take_dogs);
             images = itemView.findViewById(R.id.imageView14);
+            images_help = itemView.findViewById(R.id.imageView13);
+            images_take = itemView.findViewById(R.id.imageView15);
         }
     }
 }

@@ -13,6 +13,8 @@
         <action
             android:id="@+id/action_reg_to_dogs"
             app:destination="@id/dogs"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
             app:popUpTo="@id/reg"
             app:popUpToInclusive="true" />
     </fragment>
@@ -29,6 +31,8 @@
         <action
             android:id="@+id/action_login_to_dogs"
             app:destination="@id/dogs"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
             app:popUpTo="@id/login"
             app:popUpToInclusive="true" />
     </fragment>
@@ -42,13 +46,19 @@
             app:destination="@id/priuts" />
         <action
             android:id="@+id/action_dogs_to_profileDog"
-            app:destination="@id/profileDog" />
+            app:destination="@id/profileDog"
+            app:enterAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_in_right" />
         <action
             android:id="@+id/action_dogs_to_take2"
-            app:destination="@id/take2" />
+            app:destination="@id/take2"
+            app:enterAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_in_right" />
         <action
             android:id="@+id/action_dogs_to_pay"
-            app:destination="@id/pay" />
+            app:destination="@id/pay"
+            app:enterAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_in_right" />
         <action
             android:id="@+id/action_dogs_self"
             app:destination="@id/dogs" />
@@ -72,13 +82,19 @@
         tools:layout="@layout/fragment_profile_dog" >
         <action
             android:id="@+id/action_profileDog_to_walk"
-            app:destination="@id/walk" />
+            app:destination="@id/walk"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left" />
         <action
             android:id="@+id/action_profileDog_to_take2"
-            app:destination="@id/take2" />
+            app:destination="@id/take2"
+            app:enterAnim="@anim/slide_in_y"
+            app:popEnterAnim="@anim/slide_in_right" />
         <action
             android:id="@+id/action_profileDog_to_pay"
-            app:destination="@id/pay" />
+            app:destination="@id/pay"
+            app:enterAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_in_right" />
     </fragment>
     <fragment
         android:id="@+id/pay"

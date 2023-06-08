@@ -38,7 +38,7 @@
                     android:layout_height="261dp"
                     android:scaleX="2"
 
-                    android:scaleY="1.5"
+                    android:scaleY="2"
                     tools:src="@tools:sample/avatars" />
             </androidx.cardview.widget.CardView>
 

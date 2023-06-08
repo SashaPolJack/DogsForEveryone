@@ -4,6 +4,8 @@ import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,8 +19,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.dogsforall.MainActivity;
+import com.example.dogsforall.Onboarding;
 import com.example.dogsforall.R;
 import com.example.dogsforall.UI.LoginView.AutoViewModal;
 import com.example.dogsforall.UI.LoginView.Reg.RegViewModel;
@@ -127,7 +132,7 @@ public class Login extends Fragment {
                             }
                         }
                     });
-
+                    System.out.println("sss");
                     navigation.navigate(R.id.action_login_to_dogs);
                 }
             }
@@ -142,7 +147,14 @@ public class Login extends Fragment {
         Button log_but = v.findViewById(R.id.button);
         CardView navigationView = getActivity().findViewById(R.id.card_nav);
         navigationView.setVisibility(View.GONE);
-
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView button_help = v.findViewById(R.id.imageView33);
+        button_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getActivity(), Onboarding.class);
+                startActivity(myIntent);
+            }
+        });
 
 
         reg_but.setOnClickListener(new View.OnClickListener() {
