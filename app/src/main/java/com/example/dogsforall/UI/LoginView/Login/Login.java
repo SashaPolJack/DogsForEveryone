@@ -30,6 +30,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Collections;
+
 public class Login extends Fragment {
 
     private LoginViewModel mViewModel;
@@ -100,9 +102,9 @@ public class Login extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         database = FirebaseFirestore.getInstance();
-        autoViewModal = new ViewModelProvider(this, (ViewModelProvider.Factory) ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())).get(AutoViewModal.class);
-
+        autoViewModal = new ViewModelProvider(requireActivity()).get(AutoViewModal.class);
         Handler handler = new Handler();
+
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -110,7 +112,23 @@ public class Login extends Fragment {
                 if (autoViewModal.getCurrentUser() != null){
 
 
-                    //navigation.navigate(R.id.action_login_to_dogs);
+
+                    database.collection("Users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()){
+                                for (DocumentSnapshot document : task.getResult()) {
+
+                                    if (autoViewModal.getCurrentUser().getEmail().equals(document.getData().get("email").toString().toLowerCase())){
+                                        System.out.println(document.getData());
+                                        regViewModel.getDataUserRepository().setCurrentUser(document);
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    navigation.navigate(R.id.action_login_to_dogs);
                 }
             }
         },4000);

@@ -11,12 +11,15 @@ import androidx.navigation.Navigation;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.example.dogsforall.UI.LoginView.AutoViewModal;
 import com.example.dogsforall.UI.LoginView.Dogs.Dogs;
 import com.example.dogsforall.UI.LoginView.Dogs.DogsViewModel;
 import com.example.dogsforall.UI.LoginView.Priutes.Priuts;
 import com.example.dogsforall.UI.LoginView.Priutes.PriutsViewModel;
 import com.example.dogsforall.UI.LoginView.Profile.Profile;
+import com.example.dogsforall.UI.LoginView.Reg.RegViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore database;
     private DogsViewModel dogsViewModel;
     private PriutsViewModel priutsViewModel;
+    private AutoViewModal autoViewModal;
+    private RegViewModel regViewModel;
 
     private NavController navController;
 
@@ -47,7 +52,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         dogsViewModel =new ViewModelProvider(this).get(DogsViewModel.class);
         priutsViewModel =new ViewModelProvider(this).get(PriutsViewModel.class);
+        autoViewModal = new ViewModelProvider(this).get(AutoViewModal.class);
         database = FirebaseFirestore.getInstance();
+
+
+
+
         database.collection("Dogs").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {

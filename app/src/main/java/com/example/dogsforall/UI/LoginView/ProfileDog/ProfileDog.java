@@ -1,5 +1,6 @@
 package com.example.dogsforall.UI.LoginView.ProfileDog;
 
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -40,7 +41,8 @@ public class ProfileDog extends Fragment {
         DogsViewModel dogsViewModel = new ViewModelProvider(requireActivity()).get(DogsViewModel.class);
 
         ProfileDogViewModel profileDogViewModel = new ViewModelProvider(requireActivity()).get(ProfileDogViewModel.class);
-
+        CardView navigationView = getActivity().findViewById(R.id.card_nav);
+        navigationView.setVisibility(View.GONE);
         DocumentSnapshot dog = profileDogViewModel.getDogsRepsitory().getDocumentSnapshotMutableLiveData().getValue();
         TextView name = view.findViewById(R.id.name_dog);
         TextView desc = view.findViewById(R.id.desc_dog);

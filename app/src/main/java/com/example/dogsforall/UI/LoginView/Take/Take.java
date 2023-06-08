@@ -19,6 +19,9 @@ import android.widget.Toast;
 import com.example.dogsforall.R;
 import com.example.dogsforall.UI.LoginView.ProfileDog.ProfileDogViewModel;
 import com.example.dogsforall.UI.LoginView.Reg.RegViewModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
@@ -30,9 +33,15 @@ public class Take extends Fragment {
     private TakeViewModel mViewModel;
     private FirebaseFirestore database;
     private  String curDate;
-
+ private  int count_take;
     public static Take newInstance() {
         return new Take();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -48,6 +57,20 @@ public class Take extends Fragment {
         CalendarView calendarView = view.findViewById(R.id.calendarView);
         Button button = view.findViewById(R.id.take_but6);
 
+        DocumentSnapshot documentSnapshot = regViewModel.getDataUserRepository().getMutableLiveDataUser().getValue();
+        database.collection("Users").document(documentSnapshot.getId()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+
+                    count_take =Math.toIntExact((Long) task.getResult().getData().get("countTake"));
+                    System.out.println(count_take + "sssssssssssssssss");
+
+                }
+
+            }
+        });
+
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
 
             @Override
@@ -58,14 +81,21 @@ public class Take extends Fragment {
             }
         });
         button.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                int count_take =Math.toIntExact((Long)  regViewModel.getDataUserRepository().getMutableLiveDataUser().getValue().getData().get("countTake"));
+
                 count_take+=1;
-                regViewModel.getDataUserRepository().getMutableLiveDataUser().getValue().getData().put("countTake",count_take);
+
                 System.out.println(count_take);
+                String dogs_str = (String) regViewModel.getDataUserRepository().getMutableLiveDataUser().getValue().getData().get("dogs");
                 Toast.makeText(getActivity(), "Вы успешно выбрали дату, чтобы забрать собачку", Toast.LENGTH_SHORT).show();
-                database.collection("Users").document(regViewModel.getDataUserRepository().getMutableLiveDataUser().getValue().getId()).update("dogs",profileDogViewModel.getDogsRepsitory().getDocumentSnapshotMutableLiveData().getValue().getData().get("name").toString() + " "+ curDate,"countTake",count_take);
+                database.collection("Users").document(regViewModel.getDataUserRepository().getMutableLiveDataUser().getValue().getId()).update("dogs",profileDogViewModel.getDogsRepsitory().getDocumentSnapshotMutableLiveData().getValue().getData().get("name").toString()+" "+ profileDogViewModel.getDogsRepsitory().getDocumentSnapshotMutableLiveData().getValue().getData().get("Image").toString() +" "+ curDate +"@"+dogs_str,"countTake",count_take);
+                regViewModel.getDataUserRepository().getMutableLiveDataUser().getValue().getData();
+                //System.out.println(regViewModel.getDataUserRepository().getMutableLiveDataUser().getValue().getData());
+
+
+//                System.out.println(documentSnapshot.getData());
             }
         });
 

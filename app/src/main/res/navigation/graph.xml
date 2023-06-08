@@ -99,6 +99,11 @@
         <action
             android:id="@+id/action_profile2_to_dogs"
             app:destination="@id/dogs" />
+        <action
+            android:id="@+id/action_profile2_to_login"
+            app:destination="@id/login"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/priuts"

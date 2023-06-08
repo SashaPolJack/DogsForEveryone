@@ -19,8 +19,9 @@ public class AutoViewModal extends AndroidViewModel {
     }
 
     public FirebaseUser getCurrentUser() {
-        return currentUser;
+        return repository.getCurrentuser();
     }
+
 
     public AutoViewModal(@NonNull Application application) {
         super(application);

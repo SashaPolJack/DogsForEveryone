@@ -57,7 +57,7 @@ public class Reg extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        autoViewModal = new ViewModelProvider(this, (ViewModelProvider.Factory) ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())).get(AutoViewModal.class);
+        autoViewModal = new ViewModelProvider(requireActivity()).get(AutoViewModal.class);
         database= FirebaseFirestore.getInstance();
         regViewModel =new ViewModelProvider(requireActivity()).get(RegViewModel.class);
 
@@ -85,10 +85,12 @@ public class Reg extends Fragment {
                 if (!email.isEmpty() && !pass.isEmpty() && !potpass.isEmpty() && !name_str.isEmpty()){
                     if (pass.equals(potpass)){
                         autoViewModal.singUp(email,pass);
+                        System.out.println(autoViewModal.getCurrentUser());
                         autoViewModal.getFirebaseUserMutableLiveData().observe(getViewLifecycleOwner(), new Observer<FirebaseUser>() {
                             @Override
                             public void onChanged(FirebaseUser firebaseUser) {
                                 if (firebaseUser != null){
+
                                     user.setId(autoViewModal.getCurrentUser().getUid());
 
                                     database.collection("Users").add(user);
